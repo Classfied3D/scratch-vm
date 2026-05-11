@@ -364,6 +364,13 @@ class JSGenerator {
             return `(Math.log(${this.descendInput(node.value)}) / Math.LN10)`;
         case InputOpcode.OP_MOD:
             this.descendedIntoModulo = true;
+            if (node.right.opcode === InputOpcode.CONSTANT) {
+                const modulus = this.descendInput(node.right);
+                // Modulo using remainder operation: (left % modulus + modulus) % modulus
+                // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder
+                // Referencing the modulus multiple times here is fine because it is constant
+                return `((${this.descendInput(node.left)} % ${modulus} + ${modulus}) % ${modulus})`;
+            }
             return `mod(${this.descendInput(node.left)}, ${this.descendInput(node.right)})`;
         case InputOpcode.OP_MULTIPLY:
             return `(${this.descendInput(node.left)} * ${this.descendInput(node.right)})`;
