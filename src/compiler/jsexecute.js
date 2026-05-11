@@ -560,9 +560,7 @@ runtimeFunctions.colorToList = `const colorToList = color => globalState.Cast.to
  * @returns {number} n % modulus (floored division)
  */
 runtimeFunctions.mod = `const mod = (n, modulus) => {
-    let result = n % modulus;
-    if (result / modulus < 0) result += modulus;
-    return result;
+    return (n % modulus + modulus) % modulus;
 }`;
 
 /**
