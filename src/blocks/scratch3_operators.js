@@ -121,10 +121,8 @@ class Scratch3OperatorsBlocks {
     mod (args) {
         const n = Cast.toNumber(args.NUM1);
         const modulus = Cast.toNumber(args.NUM2);
-        let result = n % modulus;
         // Scratch mod uses floored division instead of truncated division.
-        if (result / modulus < 0) result += modulus;
-        return result;
+        return ((n % modulus) + modulus) % modulus;
     }
 
     round (args) {
