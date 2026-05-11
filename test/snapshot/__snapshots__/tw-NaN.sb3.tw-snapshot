@@ -38,10 +38,10 @@ runtime.ext_scratch3_looks._say("pass", target);
 if (((toNotNaN(Math.sqrt(-1)) * 1) === 0)) {
 runtime.ext_scratch3_looks._say("pass", target);
 }
-if ((("" + mod(0, 0)).toLowerCase() === "NaN".toLowerCase())) {
+if ((("" + ((0 % 0 + 0) % 0)).toLowerCase() === "NaN".toLowerCase())) {
 runtime.ext_scratch3_looks._say("pass", target);
 }
-if (((toNotNaN(mod(0, 0)) * 1) === 0)) {
+if (((toNotNaN(((0 % 0 + 0) % 0)) * 1) === 0)) {
 runtime.ext_scratch3_looks._say("pass", target);
 }
 if ((("" + Math.log(-1)).toLowerCase() === "NaN".toLowerCase())) {
